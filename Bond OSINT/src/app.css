@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* Fonts */
+.font-display {
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+}
+
+.font-mono {
+  font-family: 'Share Tech Mono', 'Rajdhani', monospace;
+}
+
+/* Base */
+body {
+  background: #050810;
+  color: #e2e8f0;
+  overflow: hidden;
+}
+
+/* Leaflet dark styling */
+.leaflet-container {
+  background: #0a0e1a !important;
+}
+
+.satellite-tiles {
+  filter: brightness(0.75) saturate(0.8) contrast(1.1);
+}
+
+/* Bond tooltip styling */
+.bond-tooltip .leaflet-tooltip {
+  background: rgba(5, 8, 16, 0.92) !important;
+  border: 1px solid rgba(0, 212, 255, 0.3) !important;
+  color: #00d4ff !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+  border-radius: 2px !important;
+  padding: 4px 8px !important;
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.2) !important;
+}
+
+/* Custom range input styling */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 2px;
+  outline: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00d4ff;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.6);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #00d4ff;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 212, 255, 0.6);
+}
+
+/* Animations */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes slide-in {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scanline {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s ease-out forwards;
+}
+
+/* CRT scanline effect */
+.bond-osint::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.015) 2px,
+    rgba(0, 212, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Glow text effect */
+.glow-text {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050810;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a3a4a;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d4ff44;
+}
+
+/* Map cursor */
+.leaflet-container {
+  cursor: crosshair !important;
+}
+
+/* Remove default Leaflet zoom controls styling */
+.leaflet-control-zoom {
+  display: none;
+}
+
+/* Aircraft trail effect */
+@keyframes aircraft-move {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
+/* Panel backdrop */
+.panel-backdrop {
+  background: rgba(5, 8, 16, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+/* Threat pulse */
+@keyframes threat-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 34, 34, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 34, 34, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 34, 34, 0); }
+}
+
+/* Hex grid overlay (decorative) */
+.hex-overlay {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='100'%3E%3Cpath d='M28 66L0 50V18L28 2l28 16v32L28 66zm0-2.67L54 50V20L28 4.67 2 20v30L28 63.33z' fill='none' stroke='rgba(0,212,255,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+/* Bottom timeline height */
+.timeline-height {
+  height: 104px;
+}
+
+/* Loading pulse */
+@keyframes data-load {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.data-loading {
+  animation: data-load 1.5s ease-in-out infinite;
+}
+
+/* Grid corner decorations */
+.corner-decoration::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid #00d4ff44;
+  border-left: 1px solid #00d4ff44;
+}
+
+.corner-decoration::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-bottom: 1px solid #00d4ff44;
+  border-right: 1px solid #00d4ff44;
+}
